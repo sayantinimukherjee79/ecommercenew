@@ -50,9 +50,6 @@ router.get("/top-selling", getTopSellingProducts);
 //get a single product by id
 router.get("/:id", getProductById);
 
-
-
-
 //update a product
 
 router.put(
@@ -66,10 +63,5 @@ router.put(
 router.delete("/:id", deleteProduct);
 
 router.post("/:id/reviews", addProductReview);
-
-
-
-
-
 
 export default router;
