@@ -60,6 +60,7 @@ ecommercenew/
 │
 ├── backend/        # Node.js + Express API and database logic
 ├── frontendnew/    # React frontend application
+├── screenshots/
 ├── README.md
 ```
 
@@ -127,22 +128,82 @@ RAZORPAY_KEY_SECRET=your_razorpay_secret
 
 
 ## 📸 Screenshots
+├── screenshots/ 
+  ├── AboutPage.png 
+  ├── CartPage.png 
+  ├── Contactpage.png 
+  ├── Homepage.png 
+  ├── Loginpage.png 
+  ├── MyOrderPage.png 
+  ├── OrderConfirmationPage.png 
+  ├── OrderDetailsPage.png 
+  ├── PaymentSuccessfulPage.png 
+  ├── ProductDetailsPage.png 
+  ├── ProductReviewPage.png 
+  ├── Shoppage.png 
+  ├── SignUpPage.png 
+  │── Wishlistpage.png
 
-(Add screenshots inside a `/screenshots` folder and link here)
 
-Example:
+## 📸 Then display Screenshots:
 
 ```
-/screenshots/home.png
-/screenshots/login.png
-/screenshots/cart.png
-/screenshots/orders.png
-```
+### 🏠 Home Page
 
-Then display:
+![Home](screenshots/Homepage.png)
 
-```
-![Home Page](screenshots/home.png)
+### 🛍 Shop Page
+
+![Shop](screenshots/Shoppage.png)
+
+### 🔐 Login Page
+
+![Login](screenshots/Loginpage.png)
+
+### 📝 Signup Page
+
+![Signup](screenshots/SignUpPage.png)
+
+### 📦 Product Details
+
+![Product](screenshots/ProductDetailsPage.png)
+
+### ⭐ Product Review
+
+![Review](screenshots/ProductReviewPage.png)
+
+### 🛒 Cart Page
+
+![Cart](screenshots/CartPage.png)
+
+### 💖 Wishlist Page
+
+![Wishlist](screenshots/Wishlistpage.png)
+
+### 📦 My Orders
+
+![Orders](screenshots/MyOrderPage.png)
+
+### 📄 Order Details
+
+![Order Details](screenshots/OrderDetailsPage.png)
+
+### ✅ Order Confirmation
+
+![Order Confirmation](screenshots/OrderConfirmationPage.png)
+
+### 💳 Payment Success
+
+![Payment](screenshots/PaymentSuccessfulPage.png)
+
+### 📞 Contact Page
+
+![Contact](screenshots/Contactpage.png)
+
+### ℹ About Page
+
+![About](screenshots/AboutPage.png)
+
 ```
 
 ---
