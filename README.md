@@ -10,6 +10,7 @@ This project demonstrates complete frontend–backend integration, REST API desi
 * 🛒 Add / Remove items from cart
 * 💖 Add / Remove items from wishlist
 * 📦 Place orders
+* ⭐ Product reviews and ratings
 * 🚚 Track order status
 * 🔎 Filter products by:
 
@@ -24,6 +25,7 @@ This project demonstrates complete frontend–backend integration, REST API desi
 * 📞 Customer calling/support feature
 * 🔐 Secure backend API with authentication
 * 🔄 Real-time frontend–backend communication using Axios
+* 📱 Fully responsive mobile UI
 
 
 ## 🧰 Tech Stack
@@ -66,7 +68,7 @@ ecommercenew/
 ### 1️⃣ Clone the repository
 
 ```
-git clone <your-repository-link>
+git clone https://github.com/sayantinimukherjee79/ecommercenew.git
 cd ecommercenew
 ```
 
@@ -85,8 +87,6 @@ Backend will run on:
 ```
 http://localhost:5000
 ```
-
-*(or your configured port)*
 
 ---
 
@@ -113,14 +113,18 @@ http://localhost:5173
 Create a `.env` file inside **backend** folder and add:
 
 ```
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
 PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+
+RAZORPAY_KEY_ID=your_razorpay_key
+RAZORPAY_KEY_SECRET=your_razorpay_secret
 ```
 
-⚠️ Do NOT upload your real `.env` file to GitHub.
-
----
 
 ## 📸 Screenshots
 
@@ -148,9 +152,9 @@ Then display:
 ```
 POST   /api/auth/register     → Register user
 POST   /api/auth/login        → Login user
-GET    /api/products          → Fetch products
-POST   /api/cart              → Add to cart
-POST   /api/orders            → Place order
+GET    /products              → Fetch all products
+POST   /api/cart/add          → Add to cart
+POST   /api/orders/place      → Place order
 ```
 
 ---
@@ -166,11 +170,10 @@ POST   /api/orders            → Place order
 
 ## 🔮 Future Improvements
 
-* 💳 Add payment gateway integration
-* ⭐ Product reviews and ratings
 * 🛠 Admin dashboard for product management
-* 🔍 Advanced product search & filters
-* 📱 Fully responsive mobile UI
+* 🤖 AI-powered chatbot for handling customer queries and support
+* 🔔 Email/SMS notifications for order updates
+
 
 ---
 
@@ -179,7 +182,7 @@ POST   /api/orders            → Place order
 **Sayantini Mukherjee**
 
 * GitHub: *(add your profile link here)*
-* Email: *(optional)*
+* Email: sayantinimukherjee79@gmail.com
 
 ---
 
