@@ -181,7 +181,7 @@ POST   /api/orders/place      → Place order
 
 **Sayantini Mukherjee**
 
-* GitHub: *(add your profile link here)*
+* GitHub: https://github.com/sayantinimukherjee79
 * Email: sayantinimukherjee79@gmail.com
 
 ---
