@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import ShopFilters from "../components/ShopFilters";
 
+
 function Shop() {
 
     const [open, setOpen] = useState(false);
@@ -43,14 +44,17 @@ function Shop() {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            let url = "http://localhost:5000/products";
+
+            const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+            let url = "http://localhost:5000/products" || `${BASE_URL}/products`;
 
             if (categoryId) {
-                url = `http://localhost:5000/products/category/${categoryId}`;
+                url = `http://localhost:5000/products/category/${categoryId}` || `${BASE_URL}/products/category/${categoryId}`;
             }
 
             if (searchText || searchQuery) {
-                url = `http://localhost:5000/products/search?keyword=${searchText || searchQuery}`;
+                url = `http://localhost:5000/products/search?keyword=${searchText || searchQuery}` || `${BASE_URL}/products/search?keyword=${searchText || searchQuery}`;
             }
 
             try {

@@ -25,7 +25,8 @@ function NewProducts() {
     useEffect(() => {
         const fetchNewProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/products/new");
+                const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+                const res = await axios.get("http://localhost:5000/products/new" || `${BASE_URL}/products/new`);
                 setProducts(res.data);
             } catch (err) {
                 console.error(err);

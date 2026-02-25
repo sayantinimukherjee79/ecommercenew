@@ -81,8 +81,9 @@ function Login() {
 
         try {
 
+            const BASE_URL = import.meta.env.VITE_API_BASE_URL;
             const res = await axios.post(
-                "http://localhost:5000/api/auth/login",
+                "http://localhost:5000/api/auth/login" || `${BASE_URL}/api/auth/login`,
                 { email, password }
             );
 

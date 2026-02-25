@@ -48,7 +48,8 @@ function BestDeal() {
     useEffect(() => {
         const fetchBestDealProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/products/sale");
+                const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+                const res = await axios.get("http://localhost:5000/products/sale" || `${BASE_URL}/products/sale`);
                 setProducts(res.data);
             } catch (err) {
                 console.error(err);

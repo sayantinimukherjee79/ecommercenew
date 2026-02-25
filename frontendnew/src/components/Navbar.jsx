@@ -26,10 +26,12 @@ function Navbar() {
     const searchRef = useRef(null);
     const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0 });
 
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/categories");
+                const res = await axios.get("http://localhost:5000/api/categories" || `${BASE_URL}/api/categories`);
                 setCategoriesList(res.data.categories || res.data);
 
             } catch (err) {
@@ -48,7 +50,7 @@ function Navbar() {
 
         try {
             const res = await axios.get(
-                `http://localhost:5000/products/search?keyword=${text}`
+                `http://localhost:5000/products/search?keyword=${text}` || `${BASE_URL}/products/search?keyword=${text}`
             );
             setSearchResults(Array.isArray(res.data) ? res.data : []);
             setIsSearchOpen(true);

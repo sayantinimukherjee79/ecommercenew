@@ -43,8 +43,10 @@ function ProductDetail() {
     const [canReview, setCanReview] = useState(false);
     // const [currentUser,setCurrentUser] = useState(null);
 
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}` || `${BASE_URL}/products/${id}`)
 
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -53,7 +55,7 @@ function ProductDetail() {
 
 
     useEffect(() => {
-        axios.get("http://localhost:5000/products")
+        axios.get("http://localhost:5000/products" || `${BASE_URL}/products`)
             .then(res => setAllProducts(res.data))
             .catch(err => console.error(err));
     }, []);
@@ -67,7 +69,7 @@ function ProductDetail() {
 
                 const token = localStorage.getItem("token")
 
-                const { data } = await axios.get(`http://localhost:5000/api/orders/can-review/${id}`, {
+                const { data } = await axios.get(`http://localhost:5000/api/orders/can-review/${id}` || `${BASE_URL}/api/orders/can-review/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
@@ -115,7 +117,7 @@ function ProductDetail() {
             setReviewError("");
 
             const { data } = await axios.post(
-                `http://localhost:5000/products/${product._id}/reviews`,
+                `http://localhost:5000/products/${product._id}/reviews` || `${BASE_URL}/products/${product._id}/reviews`,
                 reviewData,
                 {
                     headers: {

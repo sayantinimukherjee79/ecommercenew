@@ -5,8 +5,9 @@ function ProductsPage({ selectedBrands }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
     axios
-      .get("http://localhost:5000/api/products")
+      .get("http://localhost:5000/api/products" ||  `${BASE_URL}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);

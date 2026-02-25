@@ -102,8 +102,9 @@ function PlaceOrderPage() {
     // ⭐ ONLINE PAYMENT FLOW
     try {
 
+      const BASE_URL = import.meta.env.VITE_API_BASE_URL;
       // create razorpay order
-      const res = await fetch("http://localhost:5000/api/payment/create-order", {
+      const res = await fetch("http://localhost:5000/api/payment/create-order" || `${BASE_URL}/api/payment/create-order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
