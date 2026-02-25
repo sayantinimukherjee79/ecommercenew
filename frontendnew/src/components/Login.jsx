@@ -24,6 +24,7 @@ function Login() {
     const [signupEmail, setSignupEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [role, setRole] = useState("customer");
+     const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
     const handleRegister = async (e) => {
@@ -38,7 +39,7 @@ function Login() {
 
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/auth/register",
+                 `${BASE_URL}/api/auth/register`,
                 {
                     name,
                     email: signupEmail,
@@ -81,7 +82,7 @@ function Login() {
 
         try {
 
-            const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+           
             const res = await axios.post(
                  `${BASE_URL}/api/auth/login`,
                 { email, password }
