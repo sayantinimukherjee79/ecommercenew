@@ -7,7 +7,7 @@ function ProductsPage({ selectedBrands }) {
   useEffect(() => {
     const BASE_URL = import.meta.env.VITE_API_BASE_URL;
     axios
-      .get("http://localhost:5000/api/products" ||  `${BASE_URL}/api/products`)
+      .get(`${BASE_URL}/api/products`)
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);

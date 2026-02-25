@@ -10,7 +10,7 @@ function ProductList() {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/products" || `${BASE_URL}/products`)
+        fetch(`${BASE_URL}/products`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .catch((err) => console.error("getting error in fetching products:", err));

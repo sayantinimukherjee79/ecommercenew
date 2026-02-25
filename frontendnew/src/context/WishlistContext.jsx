@@ -4,6 +4,8 @@ import axios from "axios";
 
 const WishlistContext = createContext();
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export function WishlistProvider({ children }) {
   const [wishlistItems, setWishlistItems] = useState(() => {
     const saved = localStorage.getItem("wishlist");
@@ -16,7 +18,7 @@ export function WishlistProvider({ children }) {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const res = await axios.get("http://localhost:5000/api/wishlist", {
+      const res = await axios.get(`${BASE_URL}/api/wishlist`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -55,7 +57,7 @@ export function WishlistProvider({ children }) {
 
   try {
     await axios.post(
-      "http://localhost:5000/api/wishlist/add",
+      `${BASE_URL}/api/wishlist/add`,
       { productId },
       config
     );
@@ -89,7 +91,7 @@ export function WishlistProvider({ children }) {
 
     try {
       const { data } = await axios.delete(
-        "http://localhost:5000/api/wishlist/remove",
+        `${BASE_URL}/api/wishlist/remove`,
 
         config
       );

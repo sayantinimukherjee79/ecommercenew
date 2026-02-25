@@ -29,7 +29,7 @@ function AddProduct() {
             const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
             const res = await axios.post(
-                "http://localhost:5000/products" || `${BASE_URL}/products`,
+               `${BASE_URL}/products`,
 
                 formData,
                 {

@@ -31,7 +31,7 @@ function Navbar() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/categories" || `${BASE_URL}/api/categories`);
+                const res = await axios.get(`${BASE_URL}/api/categories`);
                 setCategoriesList(res.data.categories || res.data);
 
             } catch (err) {
@@ -50,7 +50,7 @@ function Navbar() {
 
         try {
             const res = await axios.get(
-                `http://localhost:5000/products/search?keyword=${text}` || `${BASE_URL}/products/search?keyword=${text}`
+                `${BASE_URL}/products/search?keyword=${text}`
             );
             setSearchResults(Array.isArray(res.data) ? res.data : []);
             setIsSearchOpen(true);

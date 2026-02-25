@@ -21,7 +21,7 @@ const OrderSuccess = () => {
 
                 const res = await axios.get(
                     
-                    `http://localhost:5000/api/orders/${id}` || `${BASE_URL}/api/orders/${id}`,  
+                    `${BASE_URL}/api/orders/${id}`,  
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
