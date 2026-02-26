@@ -140,7 +140,7 @@ function Navbar() {
        px-4 md:px-8 lg:px-10 py-7 lg:py-10 bg-cover bg-center"
                 style={{
                     backgroundImage:
-                        "url('https://images.pexels.com/photos/5926408/pexels-photo-5926408.jpeg')",
+                        "url('https://images.pexels.com/photos/62693/pexels-photo-62693.jpeg')",
                 }}
             >
                 {/* Logo */}
