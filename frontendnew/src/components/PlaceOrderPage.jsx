@@ -109,7 +109,7 @@ function PlaceOrderPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ amount: totalAmount * 100 }), // paise
+        body: JSON.stringify({ amount: totalAmount }), // paise
       });
 
       const razorOrder = await res.json();

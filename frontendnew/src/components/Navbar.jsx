@@ -19,6 +19,7 @@ function Navbar() {
     const [isCategoryOpen, setisCategoryOpen] = useState(false);
     const boxRef = useRef(null);
     const [isHamburger, setIsHamburger] = useState(false);
+    const mobileMenuRef = useRef(null);
     const [categoriesList, setCategoriesList] = useState([]);
     const [searchText, setSearchText] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -86,6 +87,26 @@ function Navbar() {
         return () => document.removeEventListener("keydown", esc);
     }, []);
 
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (
+                mobileMenuRef.current &&
+                !mobileMenuRef.current.contains(event.target)
+            ) {
+                setIsHamburger(false);
+            }
+        };
+
+        if (isHamburger) {
+            document.addEventListener("mousedown", handleOutsideClick);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, [isHamburger]);
+
     const linkClass = () =>
         "relative text-black hover:text-red-400";
 
@@ -112,7 +133,7 @@ function Navbar() {
     };
 
     return (
-        <nav className="w-full overflow-x-hidden">
+        <nav className="w-full">
             {/* ================= FIRST NAVBAR ================= */}
             <div
                 className="w-full flex items-center justify-between
@@ -126,7 +147,7 @@ function Navbar() {
                 <img
                     src={logo}
                     alt="logo"
-                    className="h-10 sm:h-12 lg:h-16 w-auto cursor-pointer"
+                    className="h-10 sm:h-12 lg:h-16 w-auto cursor-pointer rounded-full"
                 />
 
                 {/* Desktop Menu */}
@@ -138,6 +159,7 @@ function Navbar() {
                     <NavLink to="/blog" className={linkClass}>Blog</NavLink>
                     <NavLink to="/about" className={linkClass}>About Us</NavLink>
                     <NavLink to="/contacts" className={linkClass}>Contact Us</NavLink>
+                    <NavLink to="/my-order" className={linkClass}>My Orders</NavLink>
                 </ul>
 
                 {/* Right Icons */}
@@ -169,6 +191,7 @@ function Navbar() {
                     </div>
 
 
+                    {/* Cart */}
                     <div className="relative">
                         <MdOutlineShoppingBag size={28} onClick={openCart} />
                         {cartCount > 0 && (
@@ -178,34 +201,40 @@ function Navbar() {
                         )}
                     </div>
 
-                    {/* Mobile Hamburger */}
-                    <button
-                        className="xl:hidden text-2xl"
-                        onClick={() => setIsHamburger(!isHamburger)}
-                    >
-                        <GiHamburgerMenu />
-                    </button>
+                    {/* Hamburger Wrapper */}
+                    <div ref={mobileMenuRef} className="relative xl:hidden">
+
+                        {/* Hamburger Button */}
+                        <button
+                            className="text-2xl"
+                            onClick={() => setIsHamburger(prev => !prev)}
+                        >
+                            <GiHamburgerMenu />
+                        </button>
+
+                        {/* Mobile Menu */}
+                        {isHamburger && (
+                            <ul
+                                className="absolute top-12 right-0 bg-white w-60 p-4
+            flex flex-col gap-3 text-lg font-bold text-gray-700
+            shadow-lg rounded-xl z-50"
+                            >
+                                <NavLink to="/" onClick={() => setIsHamburger(false)}>Home</NavLink>
+                                <NavLink to="/shop" onClick={() => setIsHamburger(false)}>Shop</NavLink>
+                                <NavLink to="/newproducts" onClick={() => setIsHamburger(false)}>New Products</NavLink>
+                                <NavLink to="/bestdeals" onClick={() => setIsHamburger(false)}>Best Deals</NavLink>
+                                <NavLink to="/blog" onClick={() => setIsHamburger(false)}>Blog</NavLink>
+                                <NavLink to="/about" onClick={() => setIsHamburger(false)}>About Us</NavLink>
+                                <NavLink to="/contacts" onClick={() => setIsHamburger(false)}>Contact Us</NavLink>
+                                <NavLink to="/my-order" onClick={() => setIsHamburger(false)}>My Orders</NavLink>
+                            </ul>
+                        )}
+                    </div>
                 </div>
-
-                {/* Mobile Menu */}
-                {isHamburger && (
-                    <ul className="absolute top-20 right-4 bg-white w-60 p-4
-          flex flex-col gap-3 text-lg font-bold text-gray-700
-          shadow-lg rounded-xl xl:hidden z-50">
-                        <NavLink to="/">Home</NavLink>
-                        <NavLink to="/shop">Shop</NavLink>
-                        <NavLink to="/newproducts">New Products</NavLink>
-                        <NavLink to="/bestdeals">Best Deals</NavLink>
-                        <NavLink to="/blog">Blog</NavLink>
-                        <NavLink to="/about">About Us</NavLink>
-                        <NavLink to="/contacts">Contact Us</NavLink>
-                    </ul>
-                )}
             </div>
-
             {/* ================= SECOND NAVBAR ================= */}
             <div className="w-full px-4 md:px-8 lg:px-10 py-4">
-                <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+                <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2">
 
                     {/* LEFT: Categories */}
                     <div className="relative inline-block" ref={boxRef} >
@@ -272,11 +301,9 @@ function Navbar() {
                             ref={searchRef}
                             className="
           w-full
-          max-w-60
-          sm:max-w-[420px]
-          md:max-w-lg
+          max-w-full sm:max-w-[420px] md:max-w-lg
           border border-gray-300 rounded-lg
-          overflow-hidden relative flex
+         overflow-hidden relative flex items-stretch
         "
                         >
                             <input
@@ -293,9 +320,9 @@ function Navbar() {
 
                             <button
                                 onClick={handleSearch}
-                                className="bg-blue-900 px-3 flex items-center justify-center"
+                                className="bg-blue-900 w-12 flex items-center justify-center shrink-0"
                             >
-                                <CiSearch size={22} className="text-white" />
+                                <CiSearch className="text-white text-lg sm:text-xl md:text-2xl" />
                             </button>
 
                             {isSearchOpen && searchResults.length > 0 && (
@@ -324,7 +351,7 @@ function Navbar() {
                     <div className="flex justify-end">
                         <a
                             href="tel:+7477618869"
-                          className="flex items-center gap-2 text-sm sm:text-lg font-semibold hover:text-blue-700  transition cursor-pointer"
+                            className="flex items-center gap-2 text-sm sm:text-lg font-semibold hover:text-blue-700  transition cursor-pointer"
                         >
                             <SlCallEnd className="text-xl sm:text-2xl" />
                             <span className="hidden sm:inline">+7477618869</span>

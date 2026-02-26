@@ -41,7 +41,7 @@ function MyOrders() {
       try {
         const token = localStorage.getItem("token");
         const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-        const res = await axios.get( `${BASE_URL}/api/orders/myorders`, {
+        const res = await axios.get(`${BASE_URL}/api/orders/myorders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -234,20 +234,44 @@ function MyOrders() {
                             )}
 
                           {normalizedStatus === "DELIVERED" && (
-                            <div className='flex gap-6 mt-3'>
-                              <button className='w-25 bg-blue-950 cursor-pointer text-white font-semibold rounded-xl px-5 py-3 hover:scale-105 transition-all duration-300'>Return</button>
-                              <button className='w-25 bg-blue-950 cursor-pointer text-white font-semibold rounded-xl px-5 py-3 hover:scale-105 transition-all duration-300'>Exchange</button>
-                              <p className='text-xl font-semibold mt-2 text-gray-600'>Product must be returned within 7 days</p>
+                            <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+
+                              <div className="flex gap-4">
+                                <button className="w-25 bg-blue-950 text-white font-semibold rounded-xl px-5 py-3 hover:scale-105 transition-all duration-300">
+                                  Return
+                                </button>
+
+                                <button className="w-25 bg-blue-950 text-white font-semibold rounded-xl px-5 py-3 hover:scale-105 transition-all duration-300">
+                                  Exchange
+                                </button>
+                              </div>
+
+                              <p className="text-sm md:text-base font-semibold text-gray-600">
+                                Product must be returned within 7 days
+                              </p>
+
                             </div>
                           )}
                         </div>
 
                         <button
-                          onClick={() => setOpenTrackingProduct(item.productId === openTrackingProduct ? null : item.productId)}
-                          className='absolute right-6 top-1/2 transform -translate-y-1/2 cursor-pointer'>
+                          onClick={() =>
+                            setOpenTrackingProduct(
+                              item.productId === openTrackingProduct ? null : item.productId
+                            )
+                          }
+                          className="
+    absolute 
+    right-4 
+    bottom-4 
+    md:bottom-auto 
+    md:top-1/2 
+    md:-translate-y-1/2 
+    cursor-pointer
+  "
+                        >
                           <IoIosArrowForward size={30} />
                         </button>
-
                         {normalizedStatus === "DELIVERED" && (
 
                           <button
