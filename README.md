@@ -220,6 +220,10 @@ POST   /api/orders/place      → Place order
 
 ---
 
+## Live Demo
+
+Check out the live project here: [Live Demo](https://ecommercenew-alpha.vercel.app/)
+
 ## 🧠 Challenges Faced
 
 * Handling authentication and protecting routes
